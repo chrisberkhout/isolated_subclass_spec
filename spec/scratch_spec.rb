@@ -35,13 +35,13 @@ describe Sequel::MySQLPreview::Database do
 
   describe "mocking super" do
     it "does not sork" do
-      pending "super: no superclass method 'foo' for '':MyString"
+      # pending "super: no superclass method 'foo' for '':MyString"
       class MyString < String
         def foo
           super("arg")
         end
       end
-      MyString.any_instance.stub(:super).and_return(nil)
+      MyString.any_instance.should_receive(:foo).with("arg").and_return(nil)
       MyString.new.foo
     end
   end
