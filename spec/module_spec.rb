@@ -2,7 +2,7 @@ require "sequel"
 require "sequel/adapters/mysql"
 
 module Sequel
-  module MySQLPreview
+  module MySQLPreviewMod
     class Database < Sequel::MySQL::Database
 
       def execute(sql, opts={})
@@ -18,7 +18,7 @@ module Sequel
   end
 end
 
-describe Sequel::MySQLPreview::Database do
+describe Sequel::MySQLPreviewMod::Database do
 
   module FakeMySQLAdapter
     class << self

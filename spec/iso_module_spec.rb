@@ -2,7 +2,7 @@ require "sequel"
 require "sequel/adapters/mysql"
 
 module Sequel
-  module PreviewMySQL
+  module MySQLPreviewIsoMod
 
     module MethodOverrides
       def execute(sql, opts={})
@@ -22,13 +22,13 @@ module Sequel
   end
 end
 
-describe Sequel::PreviewMySQL::Database do
+describe Sequel::MySQLPreviewIsoMod::Database do
   it "should include the override methods" do
-    subject.class.ancestors.should include(Sequel::PreviewMySQL::MethodOverrides)
+    subject.class.ancestors.should include(Sequel::MySQLPreviewIsoMod::MethodOverrides)
   end
 end
 
-describe Sequel::PreviewMySQL::MethodOverrides do
+describe Sequel::MySQLPreviewIsoMod::MethodOverrides do
 
   class FakeSuperClass
     attr_reader :last_super_call
@@ -39,7 +39,7 @@ describe Sequel::PreviewMySQL::MethodOverrides do
 
   subject do
     Class.new(FakeSuperClass).instance_eval do
-      include Sequel::PreviewMySQL::MethodOverrides
+      include Sequel::MySQLPreviewIsoMod::MethodOverrides
     end.new
   end
 

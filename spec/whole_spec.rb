@@ -2,7 +2,7 @@ require "sequel"
 require "sequel/adapters/mysql"
 
 module Sequel
-  module MySQLPreview
+  module MySQLPreviewWhole
     class Database < Sequel::MySQL::Database
 
       def execute(sql, opts={})
@@ -18,7 +18,7 @@ module Sequel
   end
 end
 
-describe Sequel::MySQLPreview::Database do
+describe Sequel::MySQLPreviewWhole::Database do
 
   let(:connection) { stub("connection") }
   before { subject.stub(:synchronize).and_yield(connection) }
